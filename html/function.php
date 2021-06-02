@@ -115,3 +115,35 @@ function get_shops($params) {
   }
   return $shops; 
 }
+
+function get_genre() {
+  $xml = getXml('http://webservice.recruit.co.jp/hotpepper/genre/v1/');
+  $genres = array();
+  foreach($xml->genre as $genre){
+    $genres[] = array(
+                      'code' => $genre->code,
+                      'name' => $genre->name
+                      );
+  }
+  return $genres;
+}
+
+function get_area() {
+  $xml = getXml('http://webservice.recruit.co.jp/hotpepper/large_area/v1/');
+  $large_areas = array();
+  foreach($xml->large_area as $large_area){
+    $large_areas[] = array(
+                              'large_area_code' => $large_area->code,
+                              'large_area_name' => $large_area->name
+                              );
+  }
+  return $large_areas;
+}
+
+function get_page($totalpage) {
+  if (isset($_GET["page"]) && $_GET["page"] > 0 && $_GET["page"] <= $totalpage) {
+    return (int)$_GET['page'];
+  } else {
+    return 1;
+  }
+}

@@ -16,7 +16,7 @@ if(isset($_GET['search_conditions'])) {
             $large_area = get_get('large_area');
             $add_large_area = ['large_area' => $large_area];
             $params = $params + $add_large_area;
-        }    
+        }
     $shops = get_shops($params);    
     }
 }

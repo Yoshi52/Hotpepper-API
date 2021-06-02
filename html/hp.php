@@ -7,37 +7,22 @@ $url = "hp_process.php";
 $range = array('' => '---', 1 => '300m', 2 => '500m', 3 => '1000m', 4 => '2000m', 5 => '3000m');
 
 //ジャンルを取得
-$xml = getXml('http://webservice.recruit.co.jp/hotpepper/genre/v1/');
-$genres = array();
-foreach($xml->genre as $genre){
-  $genres[] = array(
-                    'code' => $genre->code,
-                    'name' => $genre->name
-                    );
-}
+$genres = get_genre();
 
 //エリアを取得
-$xml = getXml('http://webservice.recruit.co.jp/hotpepper/large_area/v1/');
-$large_areas = array();
-foreach($xml->large_area as $large_area){
-  $large_areas[] = array(
-                            'large_area_code' => $large_area->code,
-                            'large_area_name' => $large_area->name
-                            );
-}
+$large_areas = get_area();
 
 //1ページに表示する件数
 $max_contents = 10;
+
 //最大ページ番号
 $totalpage = (int)ceil($cnt / $max_contents);
 $pagerange = 3;
 
-if (isset($_GET["page"]) && $_GET["page"] > 0 && $_GET["page"] <= $totalpage) {
-  $page = (int)$_GET['page'];
-} else {
-  $page = 1;
-}
+//現在のページ番号を取得
+$page = get_page($totalpage);
 
+//現在のURLを取得
 $current_url = get_url();
 
 //ページごとの表示件数の最小値と最大を取得

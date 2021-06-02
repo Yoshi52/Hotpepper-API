@@ -1,6 +1,5 @@
 <?php
 //検索が押された場合の処理
-
 if(isset($_POST['search_location'])) {
     if(isset($_POST['radius'])) {
         $radius_num = get_post('radius');
@@ -51,7 +50,7 @@ if(isset($_POST['search_location'])) {
 <div class="container">
     <?php print $location; ?>
     <div class="fluid-box">
-        <h1 class="container fluid-box-inner">title</h1>
+        <p class="container fluid-box-inner title">Gourmet Picks</p>
     </div>
     <div class="row">
         <div class="col-sm">
@@ -123,7 +122,7 @@ if(isset($_POST['search_location'])) {
                     </div>
                 </div>
             <?php } ?>
-        
+
             <p class="center line-top">
                 <?php
                 //ページング 

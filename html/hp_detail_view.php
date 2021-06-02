@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <div class="fluid-box">
-        <h1 class="container fluid-box-inner">title</h1>
+        <p class="container fluid-box-inner title">Gourmet Picks</p>
     </div>
     <?php foreach($shop_detail as $value) { ?>
         <h5><?php print h($value['name']); ?></h5>

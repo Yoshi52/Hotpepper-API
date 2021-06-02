@@ -19,5 +19,6 @@ if(empty($location)) {
     $shops = get_shops($params);
     }
 }
-include_once 'hp.php';
+
+include_once 'hp.php'
 ?>
